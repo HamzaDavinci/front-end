@@ -36,8 +36,6 @@ main{
 .maincontent{
     display: grid;
     grid-template-columns: 75% 25%;
-   
-    
 }
 
 .title{
@@ -45,8 +43,6 @@ main{
     font-size: 30px;
     font-weight: bold;
     padding-left: 20px;
-    
-    
 }
 
 .about{
@@ -56,9 +52,7 @@ main{
 }
 
 .gameinfo{
-   
     border: 1px solid black;
-    
 }
 
 .ratingbox{
@@ -82,15 +76,46 @@ main{
 }
 
 
-/* .imagecontainer{
+.imagecontainer{
     display: flex;
     flex-direction: row;
     border: 1px solid black;
+    padding: 10px;
+    border-top: none;
+    border-bottom: none;
 }
 
 .imagecontainer img{
     font-size: small;
-    padding: 5px;
     border: 1px solid black;
     margin-right: 10px;
-} */
+    width: 150px;
+    height: 150px;
+
+}
+
+.steaminfo{
+    border: 1px solid black;
+}
+
+.systeemeisen{
+    margin-bottom: 30px;
+}
+
+.recenties{
+    border-top: 1px solid black;
+}
+
+.recentie{
+    color: black;
+    font-size: 15px;
+    padding-left: 20px;
+}
+
+.recentiesinfo{
+    color: black;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    
+}
