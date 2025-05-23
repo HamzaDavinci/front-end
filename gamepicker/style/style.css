@@ -17,6 +17,13 @@ section {
     width: 100%;
 }
 
+/* Nieuwe class voor flex container in section */
+.section-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .topnav{
     display: flex;
     flex-direction: row;
@@ -36,7 +43,6 @@ section {
 #games{
     margin-left: auto;
     margin-right: 0px;
-    
 }
 
 #berekenen{
@@ -71,7 +77,6 @@ section {
     justify-content: center;
 }
 
-
 .select-circle:checked::before {
     content: "";
     position: absolute;
@@ -84,19 +89,22 @@ section {
     transform: translate(-50%, -50%);
 }
 
+/* Houd deze styling voor je header titel */
 .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.section-header h3 {
     margin: 0;
 }
 
-.section-header span {
+/* Dit zorgt dat titel, genre en rating in een kolom staan */
+.left-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling voor prijs rechts */
+.price {
+    margin-left: auto;   /* duwt prijs helemaal naar rechts */
     font-weight: bold;
+    padding-left: 20px; /* optioneel, voor wat ruimte */
 }
 
 .section-content {
@@ -125,7 +133,6 @@ section {
     gap: 15px;
     margin-bottom: 30px;
 }
-
 
 /* Container voor dropdown */
 .dropdown {
@@ -158,7 +165,6 @@ section {
     color: black;
     border-bottom: 1px solid black;
     font-size: 20px;
-    
 }
 
 /* Hover stijl: lichtgrijs net als buttons */
@@ -175,4 +181,11 @@ section {
     margin-right: 10px;
     font-size: 20px;
     display: inline-block;
+}
+
+/* Zorg dat genre en rating onder elkaar staan met een kleine margin */
+section div:not(.section-header) {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #000000;
 }

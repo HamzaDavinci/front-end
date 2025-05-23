@@ -245,7 +245,7 @@ function filterGames() {
         const gamePrice = parseFloat(gameRow.dataset.price);
 
         const matchGenre = !selectedGenre || selectedGenre === "Alle genres" || gameGenre === selectedGenre;
-        const matchRating = !selectedRating || parseInt(selectedRating) === gameRating;
+        const matchRating = !selectedRating || gameRating >= parseInt(selectedRating); // aangepast
         const matchPrice = !selectedPrice || gamePrice <= parseFloat(selectedPrice);
 
         if (matchGenre && matchRating && matchPrice) {
@@ -287,21 +287,47 @@ games.forEach(game => {
     group.appendChild(select);
 
     let section = document.createElement("section");
-    let header = document.createElement("div");
+    section.classList.add("section-flex"); // flex container
+
+    // Linkerkant: titel + genre + rating in een div
+    let leftContainer = document.createElement("div");
+    leftContainer.classList.add("left-content");
+
+    // Titel
+    let header = document.createElement("h3");
     header.classList.add("section-header");
+    header.innerText = game.title;
 
-    let title = document.createElement("h4");
-    title.innerText = game.title;
+    // Genre en rating
+    let genreLine = document.createElement("div");
+    genreLine.innerText = `Genre: ${game.genre}`;
 
+    let ratingLine = document.createElement("div");
+    ratingLine.innerText = `Rating: ${game.rating}/5`;
+
+    leftContainer.appendChild(header);
+    leftContainer.appendChild(genreLine);
+    leftContainer.appendChild(ratingLine);
+
+    // Prijs rechts
     let price = document.createElement("span");
-    price.innerText = `€ ${game.price.toFixed(2)}`;
+    price.classList.add("price");
+    if(game.price == 0){
+        price.innerText = `FREE`;
+    }
+    else{
+        price.innerText = `€ ${game.price.toFixed(2)}`;
+    }
 
-    header.appendChild(title);
-    header.appendChild(price);
-    section.appendChild(header);
+    section.appendChild(leftContainer);
+    section.appendChild(price);
+
     group.appendChild(section);
     mainContainer.appendChild(group);
 });
+
+
+
 
 const ratingBtn = document.getElementById("ratingLabel");
 
@@ -319,7 +345,8 @@ ratingBtn.addEventListener("click", () => {
         } else {
             alert("Ongeldige rating. Voer een getal in van 1 t/m 5.");
         }
-        return;
+        return; 
+
     }
 
     const confirmReset = confirm("Je hebt al een ratingfilter. Wil je deze resetten?");
